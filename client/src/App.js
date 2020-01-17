@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios'
 import './App.css';
 import Nav from './components/Nav'
@@ -24,7 +24,7 @@ render(){
     <div className="App">
         <Nav/>
         {this.state.players.map(player=>(
-          <div>
+          <div key={Math.random()}>
           <h1>{player.name}</h1>
           <h3>{player.country}</h3>
           </div>

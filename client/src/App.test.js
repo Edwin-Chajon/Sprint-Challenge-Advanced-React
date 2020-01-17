@@ -12,4 +12,3 @@ test('dark mode renders', () => {
   const navContainer = render(<Nav/>);
   navContainer.getByText("DarkMode")
 })
-
