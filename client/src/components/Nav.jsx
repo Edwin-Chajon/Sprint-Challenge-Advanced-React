@@ -15,7 +15,6 @@ const Nav = () => {
           onClick={toggleMode}
           className={darkMode ? 'toggle toggled' : 'toggle'}
         >DarkMode</div>
-
         </div>
         </nav>
     )
