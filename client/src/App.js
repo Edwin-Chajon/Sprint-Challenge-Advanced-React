@@ -4,37 +4,33 @@ import './App.css';
 import Nav from './components/Nav'
 
 class App extends React.Component {
-
+  _isMounted = false;
   state = {
-    players: [],
-    playersText: ''
+    players: []
   };
-
 componentDidMount(){
+  this._isMounted = true;
   axios.get('http://localhost:5000/api/players').then(response => {
+    if (this._isMounted) {
     this.setState({players: response.data})
+    }
   })
-  window.addEventListener('resize', this.handleResize);
 }
 componentWillUnmount() {
-  window.removeEventListener('resize', this.handleResize);
+  this._isMounted = false;
 }
-
 render(){
   return(
     <div className="App">
         <Nav/>
-      <div className="players">
         {this.state.players.map(player=>(
           <div>
-          <h2>{player.name}</h2>
+          <h1>{player.name}</h1>
           <h3>{player.country}</h3>
           </div>
         ))}
-      </div>
     </div>
   )
 }
 }
-
 export default App;
